@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <ol>
+        <li>
+            <p>Create div block in html file:
+            </p>
+            <p>
+                <code>
+            &ltdiv id="like_button_container"&gt&lt/div&gt
+        </code>
+            </p>
+        </li>
+        <li>
+            <p>Add script to your html:
+            </p>
+            <p>
+                <code>
+                            <p>&ltscript src="https://unpkg.com/react@16/umd/react.development.js" crossorigin&gt&lt/script&gt</p>                            
+                            <p>&ltscript src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin&gt&lt/script&gt</p>                        
+                            <p>&ltscript src="js/like_button.js"&gt&lt/script&gt</p>                            
+                    </code>
+            </p>
+        </li>
+        <li>
+            <p>Finally, create a new file which is called like_button.js under a new js folder with the following code:
+            </p>
+            <p>
+                <code>
+                            'use strict';<br>
+                            const e = React.createElement;<br>
+                            <br>
+                            class LikeButton extends React.Component {<br>
+                              constructor(props) {<br>
+                                super(props);<br>
+                                this.state = { liked: false };<br>
+                              }<br>
+                              <br>
+                              render() {<br>
+                                if (this.state.liked) {<br>
+                                  return 'You liked this.';<br>
+                                }<br>
+                                <br>
+                                return e(<br>
+                                  'button',<br>
+                                  { onClick: () => this.setState({ liked: true }) },<br>
+                                  'Like'<br>
+                                );<br>
+                              }<br>
+                            }<br>
+                            <br>
+                            const domContainer = document.querySelector('#like_button_container');<br>
+                            ReactDOM.render(e(LikeButton), domContainer);<br>
+                    </code>
+            </p>
+        </li>
+        <li>
+            <p>Now you can see the result</p>
+        </li>
+    </ol>
+    <div>
+        <a href="../../../../../index.html" title="back to home">Back to home</a>
+    </div>
+</body>
+
+</html>

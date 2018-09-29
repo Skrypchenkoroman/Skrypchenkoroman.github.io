@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div>
+        A component takes in parameters, called props 
+        (short for “properties”), and returns a hierarchy of views to
+        display via the render method.
+    </div>
+    <div>
+        The render method returns a description of what you want to see on the screen. 
+        React takes the description and
+        displays the result. In particular, render returns a <b>React element</b>, 
+        which is a lightweight description
+        of what to render.
+    </div>
+    <div>
+        JSX is a syntax extension to JavaScript when developer types
+        tags instead of using React.createElement<br>
+        <code>
+            const e = React.createElement;
+
+            // Display a "Like" button
+            return e(
+                'button',
+                { onClick: () => this.setState({ liked: true }) },
+                'Like'
+            );
+        </code>        <br>
+        use this one<br>
+        <code>
+        // Display a "Like" button
+            return (
+                <button onClick={() => this.setState({ liked: true })}>
+                Like
+                </button>
+            );
+        </code>. 
+        We recommend using it with React to describe what the UI should look like.
+        JSX may remind you of a template<br>
+        language, but it comes with the full power of JavaScript.<br>
+        <p>Lets run command to init our project
+            "npm init -y" 
+            
+            Then lets install babel with react:
+            "npm install babel-cli@6 babel-preset-react-app@3"
+
+            And npx if its missed:
+            "npm i -g npx"
+
+            Right now we are ready to Run Jsx Preprocessor:
+            "npx babel --watch src --out-dir . --presets react-app/prod"
+
+            That will create like_button.js file based on source file.
+        </p>
+    </div>
+    <div>
+        <a href="../../../../index.html" title="back to home">Back to home</a>
+    </div>
+</body>
+
+</html>
