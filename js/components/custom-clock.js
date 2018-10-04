@@ -28,7 +28,8 @@ function ActionLink() {
   }
 
   return (
-    // as you can see in HTML we usually use: <a href="#" onClick="handleClick()">
+    // as you can see in HTML we usually use method as a string: <a href="#" onClick="handleClick()">
+    // in react we are using as a event handler
     React.createElement(
       'a',
       { href: '#', onClick: handleClick },

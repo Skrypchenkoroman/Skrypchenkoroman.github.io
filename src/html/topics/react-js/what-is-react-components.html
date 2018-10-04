@@ -2,6 +2,36 @@
 <html>
 
 <body>
+        <h2>Add React in One Minute</h2>
+        <p>This page demonstrates using React with no build tooling.</p>
+        <p>React is loaded as a script tag.</p>
+        <footer>RS</footer>
+    
+        <!-- We will put our React component inside this div. -->
+        <div id="like_button_container"></div>
+        <div id="like_button_container-jsx"></div>
+        <div class="custom-clock"></div>
+        <div class="toggle"></div>
+        <div class="calculator"></div>
+    
+        <!-- Load React. -->
+        <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <!-- Production scripts: -->
+        <!-- <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script> -->
+    
+        <!-- Quickly try JSX: -->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
+        <!-- Load our React component. -->
+        <script src="../../../../js/components/like_button.js"></script>
+        <script src="../../../../js/components/like_button_jsx.js"></script>
+        <script src="../../../../js/components/custom-clock.js"></script>
+        <script src="../../../../js/components/toggle.js"></script>
+        <script src="../../../../js/components/lifting-up.js"></script>
+<!-- 
     <div>
         A component takes in parameters, called props 
         (short for “properties”), and returns a hierarchy of views to
@@ -51,7 +81,7 @@
             Right now we are ready to Run Jsx Preprocessor:
             "npx babel --watch src --out-dir . --presets react-app/prod"
         </p>
-    </div>
+    </div> -->
     <div>
         <a href="../../../../../index.html" title="back to home">Back to home</a>
     </div>
