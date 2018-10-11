@@ -1,0 +1,38 @@
+We got an issue on production which looks like the following one:
+
+2018-10-11 05:42:03,446 [89] ERROR Website Unhandled exception logged by global application error handler. { "SessionId":"cqmmck1joo2cyxga2xrr1pkv", "Request":{"ClientIP":"127.0.0.1","URL":"/film-and-events/2018/02/09/15/02/venom","QueryString":[],"FormValues":[],"Cookies":["_ga","liveagent_oref","liveagent_ptid","AMCVS_F6E56FD556E6F9A27F000101%40AdobeOrg","AMCV_F6E56FD556E6F9A27F000101%40AdobeOrg","_gid","__gads","s_cc","liveagent_sid","liveagent_vc","WT_FPC","_gat_ac92e779bee966e693f4a64e63d89b16"],"UserAgent":"Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"} } 
+System.InvalidOperationException: Error while rendering view: '/Views/Layouts/StandardLayout.cshtml' (model: 'Sitecore.Mvc.Presentation.RenderingModel, Sitecore.Mvc').
+ ---> System.InvalidOperationException: The Sitecore.Client.ContentDatabase is null.
+   at Sitecore.DefaultClient.get_ContentDatabase()
+   at Sitecore.Layouts.RenderingReference.ParseRules(XmlNode configNode, RenderingItem renderingItem)
+   at Sitecore.Layouts.RenderingReference.ParseSettings(XmlNode configNode)
+   at Sitecore.Data.Fields.LayoutField.ExtractReferences(XmlNode deviceNode, Language language, Database database)
+   at Sitecore.Data.Items.ItemVisualization.GetRenderings(DeviceItem device, Boolean checkLogin)
+   at VueCinemas.Website.MVC.Models.Shared.StandardLayoutModel.get_AdditionalBodyClass() in C:\TeamCity\buildAgent\work\605be98f4a097b04\source\VueCinemas.Website.MVC\Models\Shared\StandardLayoutModel.cs:line 65
+   at ASP._Views_Layouts_StandardLayout_cshtml.Execute() in C:\TeamCity\buildAgent\work\605be98f4a097b04\source\VueCinemas.Website.MVC\Views\Layouts\StandardLayout.cshtml:line 64
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model, ViewDataDictionary viewData)
+   at Sitecore.Mvc.Presentation.ViewRenderer.Render(TextWriter writer)
+   --- End of inner exception stack trace ---
+   at Sitecore.Mvc.Presentation.ViewRenderer.Render(TextWriter writer)
+   at Sitecore.Mvc.Pipelines.Response.RenderRendering.ExecuteRenderer.Render(Renderer renderer, TextWriter writer, RenderRenderingArgs args)
+   at Sitecore.Mvc.Pipelines.Response.RenderRendering.ExecuteRenderer.Process(RenderRenderingArgs args)
+   at (Object , Object[] )
+   at Sitecore.Pipelines.CorePipeline.Run(PipelineArgs args)
+   at Sitecore.Pipelines.DefaultCorePipelineManager.Run(String pipelineName, PipelineArgs args, String pipelineDomain)
+   at Sitecore.Mvc.Pipelines.PipelineService.RunPipeline[TArgs](String pipelineName, TArgs args)
+   at Sitecore.Mvc.Presentation.RenderingView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+   
+Weird stuff that this is Film details page. And we have proper films all except a single one.
+It had version 5 in draft, published version 4. I've rolled back to version 3 and even fulfilled all fields as version 4 has.
+But there are no differences. But this bug is reproducable only for v4 of the item.
+
+Carry on investigation.
