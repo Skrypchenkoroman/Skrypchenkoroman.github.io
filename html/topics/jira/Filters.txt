@@ -1,3 +1,0 @@
-Sometimes you would like to create your own filters and share them.
-1. Make sure that dashboard is shared. On top left click on dashboards -> manage dashboards then you can click on setting icon and select edit -> select in Add Shares project or group and dont forget to lick on "+ Add" button.2
-2. On top select Issues → Manage Filters → settings icon → edit → "Add Shares" select project and click on "+ Add" button
