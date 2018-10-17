@@ -1,0 +1,45 @@
+1. to avoid repeating parameter prefix to reach some properties of an object in function like this one:
+function showUp(animal){
+	return `${animal.name} ${animal.age} ${animal.weight}`
+}
+
+// we can use the following construction for an object:
+function showUp({name, age, weight}){
+	return `${name} ${age} ${weight}`
+}
+// or
+function showUp(animal){
+	const {name, age, weight} = animal;
+	return `${name} ${age} ${weight}`
+}
+
+2. Good stuff for debugging is to use styles:
+- console.log('%c Text', 'color: orange; font-weight:...')
+- console.log([ obj1, obj2, obj3]) - will display table with all properties of objects;
+- instead of console.log(obj1); console.log(obj2); try to use console.log({obj1, obj2})
+in 2-nd case you will keep name of variable in console.
+
+3. Spread Syntax. if we want to save some values from another object, f.e.:
+var obj1 = ...
+var obj2 = ...
+obj1['prop1'] = obj2.prop1;
+obj1['prop2'] = obj2.prop2;
+obj1['prop3'] = obj2.prop3;
+
+we could use 
+const obj = Object.assign(obj1, obj2);
+const objX = Object.assign(obj1, { name: 'something' });
+
+instead lets use the following:
+const obj = {...obj1, ...obj2}
+const objX = {...obj1, name: 'something' }
+
+also it works with arrays if we'd like to add more elements instead of using push:
+array1 = [...array0, 'string1', 'string2'];
+
+4. loops:
+- reduce takes aggregated argument and each element;
+- map takes each element
+- filter works with predicate
+
+5. async/await:
